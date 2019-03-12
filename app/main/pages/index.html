@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+    <div class="jumbotron">
+        <h1>Flask Example</h1>
+        <p>The starting point for a new flask application</p>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h1>What you find here</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <h3>Modular Structure</h3>
+            <p>There are many poorly structured examples on the web.</p>
+            <p>This example includes a best practices setup with blueprints to enable smooth scaling of apps.</p>
+        </div>
+
+        <div class="col-md-4">
+            <h3>Flask Extensions</h3>
+            <p>Several flask extensions are included to handle the common tasks of web developers.
+                The included extensions are flask-login, flask-assets, flask-WTF and flask-mongoengine.</p>
+        </div>
+
+        <div class="col-md-4">
+            <h3>Management Scripts</h3>
+            <p>Using the Makefile, you can easily setup your development environment with a few simple commands. With the power of flask-script you can create your own commands with the flask app context setup for you.</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <h3>Tests</h3>
+            <p>Example tests, built with py.test, are included in to demonstrate how to test a flask app.</p>
+        </div>
+
+        <div class="col-md-4">
+            <h3>Common Libraries</h3>
+            <p>The CSS and JS files for Bootstrap are included, along with jQuery.</p>
+        </div>
+    </div>
+{% endblock %}

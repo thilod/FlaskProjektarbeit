@@ -1,0 +1,8 @@
+Flask
+Flask-Assets
+Flask-DebugToolbar
+Flask-Login
+flask-mongoengine
+Flask-Script
+Flask-WTF
+
