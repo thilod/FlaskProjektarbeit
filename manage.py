@@ -18,7 +18,7 @@ class InitDatabase(Command):
     def run(self):
         verified = prompt_bool('Do you really want to create a new user')
         if verified:
-            admin = User("admin", generate_password_hash("test"))
+            admin = User(username="admin", password=generate_password_hash("test"))
             admin.save()
             sys.stdout.write('Admin user with password test created')
 

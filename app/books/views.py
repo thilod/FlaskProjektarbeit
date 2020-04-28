@@ -21,7 +21,7 @@ def add():
     form = BookForm(request.form)
     if request.method == 'POST':
         if form.validate():
-            book = Book(form.title.data,form.author.data,form.year.data)
+            book = Book(title=form.title.data,author=form.author.data,year=form.year.data)
             book.save()
             flash("Book added successfully.", "success")
             return redirect(url_for('.home'))
