@@ -5,25 +5,28 @@ from .model import Book
 from .forms import BookForm
 
 # define the blueprint
-books = Blueprint('books', __name__, template_folder='pages')
+bp_books = Blueprint('books', __name__, template_folder='pages')
+
 
 # all routes
-@books.route('/')
+
+# index is list view
+@bp_books.route('/')
 @login_required
 def home():
     books = Book.objects.all()
     return render_template('list.html', books=books, info=session)
 
 
-@books.route('/add', methods=['GET', 'POST'])
+# add new book form
+@bp_books.route('/add', methods=['GET', 'POST'])
 @login_required
 def add():
     form = BookForm(request.form)
     if request.method == 'POST':
         if form.validate():
-            book = Book(title=form.title.data,author=form.author.data,year=form.year.data)
+            book = Book(title=form.title.data, author=form.author.data, year=form.year.data)
             book.save()
             flash("Book added successfully.", "success")
             return redirect(url_for('.home'))
-    return render_template('form.html', form = form, info=session)
-
+    return render_template('form.html', form=form, info=session)

@@ -1,15 +1,19 @@
+import click
 from flask import Flask
+from flask.cli import with_appcontext
 from flask_assets import Environment
 from flask_mongoengine import MongoEngine, MongoEngineSessionInterface
 from flask_login import LoginManager
 from flask_debugtoolbar import DebugToolbarExtension
 
 from webassets.loaders import PythonLoader as PythonAssetsLoader
+from werkzeug.security import generate_password_hash
 
 from app import assets
 from app.users.models import User
 
 assets_env = Environment()
+
 
 def create_app(config=None):
     """
@@ -26,13 +30,16 @@ def create_app(config=None):
 
     # set up database
     db = MongoEngine()
-    db.init_app(app);
+    db.init_app(app)
 
-    #use mongo engine for session store
+    # use mongo engine for session store
     app.session_interface = MongoEngineSessionInterface(db)
 
     # set up assets
     assets_env.init_app(app)
+
+    # setup init command
+    app.cli.add_command(init_db_command)
 
     # set up toolbar
     debug_toolbar = DebugToolbarExtension()
@@ -66,12 +73,20 @@ def load_blueprints(app):
     :return:
     """
 
-    from .users.views import users
-    from .main.views import main
-    from .books.views import books
+    from app.users.views import bp_users
+    from app.main.views import bp_main
+    from app.books.views import bp_books
 
     # register blueprints
-    app.register_blueprint(main)
-    app.register_blueprint(users, url_prefix='/users')
-    app.register_blueprint(books, url_prefix='/books')
+    app.register_blueprint(bp_main)
+    app.register_blueprint(bp_users, url_prefix='/users')
+    app.register_blueprint(bp_books, url_prefix='/books')
 
+
+# new cli command to generate user
+@click.command('init-db')
+@with_appcontext
+def init_db_command():
+    admin = User(username="admin", password=generate_password_hash("test"))
+    admin.save()
+    click.echo('Admin user with password test created')

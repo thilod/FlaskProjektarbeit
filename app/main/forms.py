@@ -1,4 +1,5 @@
 from flask_wtf import FlaskForm
+from mongoengine import DoesNotExist
 from wtforms import StringField, PasswordField
 from wtforms import validators
 from werkzeug.security import check_password_hash
@@ -21,14 +22,17 @@ class LoginForm(FlaskForm):
             return False
 
         # does our user exist?
-        user = User.objects.get(username=self.username.data)
-        if not user:
-            self.username.errors.append('Invalid username or password')
-            return False
+        try:
+            user = User.objects.get(username=self.username.data)
+            if not user:
+                self.username.errors.append('Invalid username or password')
+                return False
 
-        # do the passwords match
-        if not check_password_hash(user.password,self.password.data):
-            self.username.errors.append('Invalid username or password')
+            # do the passwords match
+            if not check_password_hash(user.password,self.password.data):
+                self.username.errors.append('Invalid username or password')
+                return False
+        except DoesNotExist:
             return False
 
         return True

@@ -14,6 +14,7 @@ class DevConfig(BaseConfig):
     MONGODB_SETTINGS = {'db': 'testing'}
     SECRET_KEY = 'flask+mongoengine=<3'
     DEBUG_TB_INTERCEPT_REDIRECTS = True
+    WTF_CSRF_ENABLED = False
 
 class TestingConfig(BaseConfig):
     DEBUG = False

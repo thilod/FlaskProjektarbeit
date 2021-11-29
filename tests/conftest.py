@@ -1,7 +1,6 @@
 import pytest
 
 from app.factory import create_app
-from app.users.models import db, User
 
 
 @pytest.fixture()
