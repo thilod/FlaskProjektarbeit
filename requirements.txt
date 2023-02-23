@@ -7,3 +7,4 @@ flask-mongoengine
 Flask-WTF
 cssmin
 jsmin
+pytest

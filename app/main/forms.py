@@ -14,7 +14,7 @@ class LoginForm(FlaskForm):
     username = StringField(u'Username', validators=[validators.DataRequired()])
     password = PasswordField(u'Password', validators=[validators.optional()])
 
-    def validate(self):
+    def validate(self, **kwargs):
         check_validate = super(LoginForm, self).validate()
 
         # if our validators do not pass
