@@ -1,0 +1,10 @@
+wheel
+Flask
+Flask-Assets
+Flask-DebugToolbar
+Flask-Login
+flask-mongoengine
+Flask-WTF
+cssmin
+jsmin
+pytest
