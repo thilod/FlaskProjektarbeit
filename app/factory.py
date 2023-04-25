@@ -78,6 +78,7 @@ def load_blueprints(app):
     from app.books.views import bp_books
     from app.student.views import bp_student
     from app.administrator.views import bp_administrator
+    from app.lecturer.views import bp_lecturer
 
     # register blueprints
     app.register_blueprint(bp_main)
@@ -85,6 +86,7 @@ def load_blueprints(app):
     app.register_blueprint(bp_books, url_prefix='/books')
     app.register_blueprint(bp_student, url_prefix='/student')
     app.register_blueprint(bp_administrator, url_prefix='/administrator')
+    app.register_blueprint(bp_lecturer, url_perfix='/lecturer')
 
 
 # new cli command to generate user
