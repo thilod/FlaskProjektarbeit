@@ -1,0 +1,19 @@
+{% from "_formhelpers.html" import render_field %}
+
+{% extends "base.html" %}
+
+{% block title %}Add book{% endblock %}
+
+{% block body %}
+<h1>Books</h1>
+
+<form method=post>
+    {{ form.hidden_tag() }}
+  <dl>
+    {{ render_field(form.title) }}
+    {{ render_field(form.author) }}
+    {{ render_field(form.year) }}
+  </dl>
+  <p><input type=submit value=Submit>
+</form>
+{% endblock %}
