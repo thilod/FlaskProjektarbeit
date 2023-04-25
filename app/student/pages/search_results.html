@@ -1,12 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Suchergebnisse</title>
 </head>
 <body>
-    
+    <h1>Suchergebnisse</h1>
+    <div class="searchbar">
+        <form action="" method="post">
+            <input type="text" name="search" value="{{request.form.search}}" placeholder="Kurse durchsuchen">
+            <input type="submit" value="Lupensymbol">
+        </form>
+    </div>
+    <div>
+        {% for course in courses %}
+            <a href="/student/course/{{course[0]}}">
+                <div class="course_name">{{course[0]}}</div>
+                <div class="course_description">{{course[1]}}</div>
+            </a>
+        {% endfor %}
+    </div>
 </body>
 </html>

@@ -11,23 +11,39 @@ bp_student = Blueprint('student', __name__, template_folder='pages')
 # all routes
 
 # index is list view
-@bp_student.route('/')
+@bp_student.route('/', methods=['GET', 'POST'])
 @login_required
 def home():
-    books = Book.objects.all()
-    return render_template('list.html', books=books, info=session)
+    if request.method == 'POST':
+        search = request.form['search']
+        print(search)
+        return redirect('search/'+search)
+    elif request.method == 'GET':
+        courses = [['Testkurs1', 'Beeeeeeeeeeschreibung'], [
+            'Testkurs2', 'Beeeeeeeeeeschreibung2'], ['Testkurs3', 'Beeeeeeeeeeschreibung3']]
+        return render_template('my_courses.html', courses=courses)
 
 
 # add new book form
-@bp_student.route('/add', methods=['GET', 'POST'])
+@bp_student.route('search/<search>', methods=['GET', 'POST'])
 @login_required
-def add():
-    form = BookForm(request.form)
+def search(search):
     if request.method == 'POST':
-        if form.validate():
-            book = Book(title=form.title.data,
-                        author=form.author.data, year=form.year.data)
-            book.save()
-            flash("Book added successfully.", "success")
-            return redirect(url_for('.home'))
-    return render_template('form.html', form=form, info=session)
+        search = request.form['search']
+        courses = [['Testkurs1', 'Beeeeeeeeeeschreibung'], [
+            'Testkurs2', 'Beeeeeeeeeeschreibung2'], ['Testkurs3', 'Beeeeeeeeeeschreibung3']]
+        return render_template('search_results.html', courses=courses)
+    elif request.method == 'GET':
+        search = search
+        courses = [['Testkurs1', 'Beeeeeeeeeeschreibung'], [
+            'Testkurs2', 'Beeeeeeeeeeschreibung2'], ['Testkurs3', 'Beeeeeeeeeeschreibung3']]
+        return render_template('search_results.html', courses=courses)
+
+# add new book form
+
+
+@bp_student.route('/course/<coursename>', methods=['GET', 'POST'])
+@login_required
+def course(coursename):
+    data = "Data: "+coursename
+    return render_template('course_details.html', data=data)
