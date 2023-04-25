@@ -1,25 +1,21 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash, session
 from flask_login import login_required
 
-from .model import Book
-from .forms import BookForm
 
 
-"""
 # define the blueprint
-bp_student = Blueprint('student', __name__, template_folder='pages')
+bp_administrator = Blueprint('administrator', __name__, template_folder='pages')
 
 
 # all routes
 
 # index is list view
-@bp_student.route('/')
+@bp_administrator.route('/courseEdit')
 @login_required
 def home():
-    books = Book.objects.all()
-    return render_template('list.html', books=books, info=session)
+    return render_template('courseEdit.html')
 
-
+"""
 # add new book form
 @bp_student.route('/add', methods=['GET', 'POST'])
 @login_required
