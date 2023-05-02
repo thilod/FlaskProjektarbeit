@@ -89,6 +89,10 @@ def load_blueprints(app):
     app.register_blueprint(bp_lecturer, url_perfix='/lecturer')
 
 
+from app.models.course import Course
+from app.models.lesson import Lesson
+from app.models.users  import Administrator, Lecturer, Student
+
 # new cli command to generate user
 @click.command('init-db')
 @with_appcontext
@@ -96,3 +100,17 @@ def init_db_command():
     admin = User(username="admin", password=generate_password_hash("test"))
     admin.save()
     click.echo('Admin user with password test created')
+    
+    course = Course(name="Test-Englischkurs", description="Anfängerfreundliche Einführung in die englische Sprache")
+    course.save()
+    admin =    Administrator(email="a.turner@examplemail.org",   firstName="Alan",            lastName="Turner",    password=generate_password_hash("test"), active=True)
+    admin.save()
+    student =  Student      (email="g.zeichner@examplemail.org", firstName="Gustav",          lastName="Zeichner",  password=generate_password_hash("test"), active=True)
+    student.save()
+    lecturer = Lecturer     (email="jw.ag@examplemail.org",      firstName="Johann Wolfgang", lastName="aus Gotha", password=generate_password_hash("test"), active=True)
+    lecturer.save()
+
+    lesson = Lesson(course=course, lecturer=lecturer, participants=[student, admin], description="Englisch 1", date="32.02.2029", maxStudents=15, canceled=False)
+    lesson.save()
+
+    click.echo('Lesson created')
