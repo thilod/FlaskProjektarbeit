@@ -23,31 +23,12 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
-        <a class="navbar-brand" href="/">Flask Example</a>
+        <a class="navbar-brand" href="/">Unsere supertolle Webapp</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar" aria-controls="myNavbar" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="myNavbar">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{ url_for('books.home') }}">Books</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Page 2</a>
-              <div class="dropdown-menu" aria-labelledby="dropdown">
-                <a class="dropdown-item" href="#">Page 2-1 </a>
-                <a class="dropdown-item" href="#">Page 2-2 </a>
-                <a class="dropdown-item" href="#">Page 2-3</a>
-              </div>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link disabled" href="#">Page 3</a>
-            </li>
-          </ul>
           <ul class="navbar-nav ml-auto">
               {% if info.username is defined %}
               <li><span class ="nav-link">Logged in as: {{info.username}}</span> </li>
@@ -64,9 +45,27 @@
     <div class="container-fluid text-center">
     <div class="row content">
         <div class="col-sm-2 sidenav">
+          {% if user == 'student' %}
+            <p><a href="/student/">Meine aktiven Kurse</a></p>
+            <p><a href="/student/finished_courses">Meine abgeschlossenen Kurse</a></p>
+          {% elif user == 'lecturer' %}
             <p><a href="#">Link</a></p>
             <p><a href="#">Link</a></p>
             <p><a href="#">Link</a></p>
+            <p><a href="#">Link</a></p>
+            <p><a href="#">Link</a></p>
+          {% elif user == 'administrator' %}
+            <p><a href="#">Link</a></p>
+            <p><a href="#">Link</a></p>
+            <p><a href="#">Link</a></p>
+            <p><a href="#">Link</a></p>
+            <p><a href="#">Link</a></p>
+            <p><a href="#">Link</a></p>
+            <p><a href="#">Link</a></p>
+            <p><a href="#">Link</a></p>
+            <p><a href="#">Link</a></p>
+            <p><a href="#">Link</a></p>
+          {% endif %}
         </div>
         <div class="col-sm-8 text-left">
             <div class="container">

@@ -1,12 +1,13 @@
 import flask
 from flask import Blueprint, render_template, flash, redirect, request, url_for, session
 from flask_login import login_user, logout_user, login_required
-from werkzeug.security import generate_password_hash
+from werkzeug.security import generate_password_hash, check_password_hash
 
 from app.main.forms import LoginForm
 from app.users.models import User
 
-bp_main = Blueprint('main', __name__, template_folder='pages', static_folder='main-static')
+bp_main = Blueprint('main', __name__, template_folder='pages',
+                    static_folder='main-static')
 
 # all routes
 
