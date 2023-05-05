@@ -21,7 +21,7 @@ def home():
     elif request.method == 'GET':
         courses = [['Testkurs1', 'Beeeeeeeeeeschreibung'], [
             'Testkurs2', 'Beeeeeeeeeeschreibung2'], ['Testkurs3', 'Beeeeeeeeeeschreibung3']]
-        return render_template('my_courses.html', courses=courses, info=session, user='student')
+        return render_template('my_courses.html', courses=courses, info=session)
 
 
 # add new book form
@@ -32,12 +32,12 @@ def search(search):
         search = request.form['search']
         courses = [['Testkurs1', 'Beeeeeeeeeeschreibung'], [
             'Testkurs2', 'Beeeeeeeeeeschreibung2'], ['Testkurs3', 'Beeeeeeeeeeschreibung3']]
-        return render_template('search_results.html', courses=courses, info=session, user='student')
+        return render_template('search_results.html', courses=courses, info=session)
     elif request.method == 'GET':
         search = search
         courses = [['Testkurs1', 'Beeeeeeeeeeschreibung'], [
             'Testkurs2', 'Beeeeeeeeeeschreibung2'], ['Testkurs3', 'Beeeeeeeeeeschreibung3']]
-        return render_template('search_results.html', courses=courses, info=session, user='student')
+        return render_template('search_results.html', courses=courses, info=session)
 
 # add new book form
 
@@ -46,7 +46,7 @@ def search(search):
 @login_required
 def course(coursename):
     data = "Data: "+coursename
-    return render_template('course_details.html', data=data, info=session, user='student')
+    return render_template('course_details.html', data=data, info=session)
 
 
 @bp_student.route('/finished_courses', methods=['GET', 'POST'])
@@ -54,4 +54,4 @@ def course(coursename):
 def finished_courses():
     courses = [['Testkurs1', 'Beeeeeeeeeeschreibung'], [
         'Testkurs2', 'Beeeeeeeeeeschreibung2'], ['Testkurs3', 'Beeeeeeeeeeschreibung3']]
-    return render_template('finished_courses.html', courses=courses, info=session, user='student')
+    return render_template('finished_courses.html', courses=courses, info=session)

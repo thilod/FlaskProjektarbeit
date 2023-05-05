@@ -5,6 +5,7 @@ from wtforms import validators
 from werkzeug.security import check_password_hash
 
 from app.users.models import User
+from app.models.users import BaseUser
 
 
 class LoginForm(FlaskForm):
@@ -23,13 +24,13 @@ class LoginForm(FlaskForm):
 
         # does our user exist?
         try:
-            user = User.objects.get(username=self.username.data)
+            user = BaseUser.objects.get(email=self.username.data)
             if not user:
                 self.username.errors.append('Invalid username or password')
                 return False
 
             # do the passwords match
-            if not check_password_hash(user.password,self.password.data):
+            if not check_password_hash(user.password, self.password.data):
                 self.username.errors.append('Invalid username or password')
                 return False
         except DoesNotExist:
