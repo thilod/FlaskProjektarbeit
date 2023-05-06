@@ -1,13 +1,9 @@
-<!DOCTYPE html>
-<html lang="de">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meine Kurse</title>
-</head>
-<body>
-    <h1>Meine Kurse</h1>
+{% extends "base.html" %}
+
+{% block title %}Meine Kurse{% endblock %}
+
+{% block body %}
+    <h1>Meine aktiven Kurse</h1>
     <div class="searchbar">
         <form action="" method="post">
             <input type="text" name="search" value="{{request.form.search}}" placeholder="Kurs suchen">
@@ -20,5 +16,4 @@
             <div class="course_description">{{course[1]}}</div>
         </a>
     {% endfor %}
-</body>
-</html>
+{% endblock %}

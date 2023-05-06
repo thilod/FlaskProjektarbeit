@@ -1,12 +1,14 @@
 import flask
 from flask import Blueprint, render_template, flash, redirect, request, url_for, session
 from flask_login import login_user, logout_user, login_required
-from werkzeug.security import generate_password_hash
+from werkzeug.security import generate_password_hash, check_password_hash
+
 
 from app.main.forms import LoginForm
-from app.users.models import User
+from app.models.users import BaseUser, Student, Lecturer, Administrator
 
-bp_main = Blueprint('main', __name__, template_folder='pages', static_folder='main-static')
+bp_main = Blueprint('main', __name__, template_folder='pages',
+                    static_folder='main-static')
 
 # all routes
 
@@ -29,9 +31,9 @@ def login():
     if flask.request.method == 'POST':
 
         if form.validate_on_submit():
-            user = User.objects.get(username=form.username.data)
+            user = BaseUser.objects.get(email=form.username.data)
             login_user(user)
-            session['username'] = form.username.data
+            session['user'] = user
             flash("Logged in successfully.", "success")
             next_page = request.args.get('next')
             return redirect(next_page or url_for(".home"))
@@ -45,7 +47,7 @@ def login():
 @bp_main.route("/logout")
 def logout():
     logout_user()
-    session.pop('username', None)
+    session.pop('user', None)
     flash("You have been logged out.", "success")
     return redirect(url_for(".home"))
 
