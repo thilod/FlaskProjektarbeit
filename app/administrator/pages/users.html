@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Benutzerübersicht{% endblock %}
+
+{% block body %}
+
+<a href="/administrator/users/create">Benutzer anlegen</a>
+<h1>Benutzerübersicht</h1>
+{% for b in benutzer %}
+<div>
+  <a href="/administrator/users/{{b[0]}}">
+    <h2>{{b[0]}}</h2>
+    <p>{{b[1]}}</p>
+  </a>
+</div>
+{% endfor %}
+
+{% endblock %}
