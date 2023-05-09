@@ -3,19 +3,21 @@
 {% block title %}Statistics{% endblock %}
 
 {% block body %}
+<h2>Statistik</h2>
+<h3>Kursanzahl verteilt auf die Woche:</h3>
 <div class="table-responsiv">
   <table class="table table-bordered text-center table-striped">
-    <caption>Kursanzahl verteilt auf die Woche</caption>
+
     <thead class="thead-dark">
       <tr>
         <th class="text-left" scope="col">Wochentag Auslastung</th>
-        <th scope="col">Montag</th>
-        <th scope="col">Dienstag</th>
-        <th scope="col">Mittowch</th>
-        <th scope="col">Donnerstag</th>
-        <th scope="col">Freitag</th>
-        <th scope="col">Samstag</th>
-        <th scope="col">Sonntag</th>
+        <th class="col col-lg-1" scope="col">Montag</th>
+        <th class="col col-lg-1" scope="col">Dienstag</th>
+        <th class="col col-lg-1" scope="col">Mittowch</th>
+        <th class="col col-lg-1" scope="col">Donnerstag</th>
+        <th class="col col-lg-1" scope="col">Freitag</th>
+        <th class="col col-lg-1" scope="col">Samstag</th>
+        <th class="col col-lg-1" scope="col">Sonntag</th>
 
       </tr>
     </thead>
@@ -29,10 +31,72 @@
         <td>15</td>
         <td>15</td>
         <td>15</td>
-
       </tr>
-
     </tbody>
   </table>
 </div>
+
+<br>
+<h3>Meistbesuchte Kurse:</h3>
+<div class="table-responsiv">
+  <table class="table table-bordered text-center table-striped">
+
+    <thead class="thead-dark">
+      <tr>
+        <th class="text-left col-lg-1" scope="col">Kurs NR</th>
+        <th scope="col"> Top Kurse </th>
+        <th class="col col-lg-3" scope="col">Dozent</th>
+        <th class="col col-lg-1" scope="col">Teilnehmer</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td>15</td>
+        <td>Holzwerken im Eigenheim</td>
+        <td> Vlad Vladimirivitch</td>
+        <td>55</td>
+      </tr>
+    </tbody>
+
+    <tbody>
+      <tr>
+        <td>15</td>
+        <td>Holzwerken im Eigenheim</td>
+        <td> Vlad Vladimirivitch</td>
+        <td>55</td>
+      </tr>
+    </tbody>
+
+    <tbody>
+      <tr>
+        <td>15</td>
+        <td>Holzwerken im Eigenheim</td>
+        <td> Vlad Vladimirivitch</td>
+        <td>55</td>
+      </tr>
+    </tbody>
+
+    <tbody>
+      <tr>
+        <td>15</td>
+        <td>Holzwerken im Eigenheim</td>
+        <td> Vlad Vladimirivitch</td>
+        <td>55</td>
+      </tr>
+    </tbody>
+
+    <tbody>
+      <tr>
+        <td>15</td>
+        <td>Holzwerken im Eigenheim</td>
+        <td> Vlad Vladimirivitch</td>
+        <td>55</td>
+      </tr>
+    </tbody>
+
+
+  </table>
+</div>
+
 {% endblock %}
