@@ -11,9 +11,9 @@
         </form>
     </div>
     {% for course in courses %}
-        <a href="/student/course/{{course[0]}}">
-            <div class="course_name">{{course[0]}}</div>
-            <div class="course_description">{{course[1]}}</div>
+        <a href="/student/course/{{course.name}}">
+            <div class="course_name">{{course.name}}</div>
+            <div class="course_description">{{course.description}}</div>
         </a>
     {% endfor %}
 {% endblock %}
