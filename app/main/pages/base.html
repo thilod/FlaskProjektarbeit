@@ -34,7 +34,6 @@
               <li><span class ="nav-link">Logged in as: {{info['user'].firstName}} {{info['user'].lastName}} - {{info.user.__class__.__name__}}</span> </li>
               <li><a class="nav-link" href="{{ url_for('main.logout') }}"><span class="fas fa-sign-in-alt fa-lg"></span> Logout </a></li>
               {% else %}
-            <li><a class="nav-link" href="#"><span class="far fa-user"></span> Sign Up</a></li>
             <li><a class="nav-link" href="{{ url_for('main.login') }}"><span class="fas fa-sign-in-alt fa-lg"></span> Login </a></li>
               {% endif %}
           </ul>
@@ -51,7 +50,7 @@
           {% endif %}
           {% if info.user.__class__.__name__ == 'Lecturer' or info.user.__class__.__name__ == 'Administrator' %}
             <p><a href="#">Lecturer</a></p>
-            <p><a href="#">Link</a></p>
+            <p><a href="/lecturer/">Lecturer test</a></p>
             <p><a href="#">Link</a></p>
             <p><a href="#">Link</a></p>
             <p><a href="#">Link</a></p>

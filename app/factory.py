@@ -89,7 +89,7 @@ def load_blueprints(app):
     app.register_blueprint(bp_books, url_prefix='/books')
     app.register_blueprint(bp_student, url_prefix='/student')
     app.register_blueprint(bp_administrator, url_prefix='/administrator')
-    app.register_blueprint(bp_lecturer, url_perfix='/lecturer')
+    app.register_blueprint(bp_lecturer, url_prefix='/lecturer')
 
 
 # new cli command to generate user
@@ -99,6 +99,9 @@ def load_blueprints(app):
 def init_db_command():
     course = Course(name="Test-Englischkurs",
                     description="Anfängerfreundliche Einführung in die englische Sprache")
+    course.save()
+    course = Course(name="Test-Informatikkurs",
+                    description="Anfängerfreundliche Einführung in die Programmierung mit Python")
     course.save()
     admin = Administrator(email="a.turner@examplemail.org",   firstName="Alan",
                           lastName="Turner",    password=generate_password_hash("test"), active=True)
