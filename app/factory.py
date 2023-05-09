@@ -13,7 +13,7 @@ from webassets.loaders import PythonLoader as PythonAssetsLoader
 from werkzeug.security import generate_password_hash
 
 from app import assets
-from app.models.users import BaseUser
+#from app.models.users import BaseUser
 
 assets_env = Environment()
 
