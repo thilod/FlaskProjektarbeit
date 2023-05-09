@@ -15,6 +15,11 @@ bp_administrator = Blueprint('administrator', __name__, template_folder='pages')
 def home():
     return render_template('courseEdit.html')
 
+@bp_administrator.route('/statistics')
+@login_required
+def statistics():
+    return render_template('statistics.html', info=session)
+
 """
 # add new book form
 @bp_student.route('/add', methods=['GET', 'POST'])

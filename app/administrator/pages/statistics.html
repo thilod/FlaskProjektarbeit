@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Statistics{% endblock %}
+
+{% block body %}
+<div class="table-responsiv">
+  <table class="table table-bordered text-center table-striped">
+    <caption>Kursanzahl verteilt auf die Woche</caption>
+    <thead class="thead-dark">
+      <tr>
+        <th class="text-left" scope="col">Wochentag Auslastung</th>
+        <th scope="col">Montag</th>
+        <th scope="col">Dienstag</th>
+        <th scope="col">Mittowch</th>
+        <th scope="col">Donnerstag</th>
+        <th scope="col">Freitag</th>
+        <th scope="col">Samstag</th>
+        <th scope="col">Sonntag</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th class="text-left" scope="row">Kurs Anzahl</th>
+        <td>15</td>
+        <td>15</td>
+        <td>15</td>
+        <td>15</td>
+        <td>15</td>
+        <td>15</td>
+        <td>15</td>
+
+      </tr>
+
+    </tbody>
+  </table>
+</div>
+{% endblock %}
