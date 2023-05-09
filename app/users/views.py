@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, session
-from app.users.models import User
+#from app.users.models import User
 
 bp_users = Blueprint('users', __name__, template_folder='pages')
 

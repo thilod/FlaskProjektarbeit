@@ -1,4 +1,3 @@
-"""
 from flask_mongoengine import MongoEngine
 from flask_login import UserMixin, login_manager
 
@@ -11,4 +10,3 @@ class User(db.Document, UserMixin):
 
     def __repr__(self):
         return '<User %r>' % self.id
-"""

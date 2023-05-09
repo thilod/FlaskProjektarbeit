@@ -4,7 +4,7 @@ from wtforms import StringField, PasswordField
 from wtforms import validators
 from werkzeug.security import check_password_hash
 
-from app.users.models import User
+#from app.users.models import User
 from app.models.users import BaseUser
 
 
